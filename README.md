@@ -1,9 +1,20 @@
-# 7. API
----
-## 1. @ResponseBody 사용 원리
+# 8. 비즈니스 요구사항 정리
 ---
 
-웹브라우저 -> URL 호출 및 파라메터 전송 -> 내장 톰켓 서버 -> (스프링 컨테이너) @ResponseBody가 붙어 있으면 HttpMessageConverter로 넘김 -> http 응답에 바로 넘김 (객체가 오면 기본 JSON 포맷으로 반환)
+- 데이터: ID, Name
+- 기능 : 등록, 조회
+- 데이터가 선정되지 않음 (시나리오)
 
-- 기본 문자처리 : StringHttpMessageConverter
-- 기본 객체처리 : MappingJackson2HttpMessageConverter
+## 일반적인 웹 애플리케이션 구조
+---
+
+- 컨트롤러 : 웹 MVC의 컨트롤러 역할
+- 서비스 : 핵심 비즈니스 로직
+- 도메인 : 비즈니스 도메인 객체
+- 리포지토리 : 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리
+
+# 9. 회원 도메인과 리포지토리 만들기
+---
+
+- domain : Member 추가
+- repository : MemberRepository(Interface), MemoryMemberRepository 추가
