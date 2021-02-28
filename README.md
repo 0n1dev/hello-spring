@@ -1,20 +1,30 @@
 # 11. 스프링 빈과 의존관계
 ---
 
-### 스프링 빈이란?
+## 2. 자바 코드로 직접 스프링 빈 등록하기
+---
 
-스프링 컨테이너에 의해서 만들어진 자바 객체를 스프링 빈이라고 부릅니다.
+### DI의 세가지 방법
 
-일반적으로 자바에서 new 연산자로 어떤 객체를 생성했을 때 그 객체는 스프링 빈이 아닙니다. 
-ApplicationContext.getBean()으로 얻어질 수 있는 객체가 스프링 빈입니다.
+- 생성자 주입 (추천)
+```java
+    private final MemberService memberService;
 
-## 1. 컴포넌트 스캔과 자동 의존관계 설정
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+```
+- 필드 주입 (비추)
+```java
+    @Autowired private MemberService memberService;
+```
+- setter 주입 (비추)
+```java
+    private MemberService memberService;
 
-회원 컨트롤러가 회원서비스와 회원 리포지토리를 사용할 수 있게 의존관계를 준비하자.
-
-### 스프링 빈 등록 방법
-
-- 컴포넌트 스캔과 자동 의존관계 설정 (컴포넌트 어노테이션(@Component)을 통한 방법 @Service, @Controller, @Repository 등)
-- 자바 코드로 직접 스프링 빈 등록
-
-> 스프링은 스프링 컨테이너에 스프링 빈을 등록할 때, 기본적으로 신글톤으로 등록 (하나만 등록해서 공유)
+    @Autowired
+    public void setMemberService(MemberService memberService) {
+        this.memberService = memberService;
+    }
+```
