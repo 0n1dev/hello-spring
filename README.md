@@ -1,30 +1,6 @@
-# 11. 스프링 빈과 의존관계
+# 12. 회원 관리 예제 - 웹 MVC 개발
 ---
 
-## 2. 자바 코드로 직접 스프링 빈 등록하기
----
-
-### DI의 세가지 방법
-
-- 생성자 주입 (추천)
-```java
-    private final MemberService memberService;
-
-    @Autowired
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
-```
-- 필드 주입 (비추)
-```java
-    @Autowired private MemberService memberService;
-```
-- setter 주입 (비추)
-```java
-    private MemberService memberService;
-
-    @Autowired
-    public void setMemberService(MemberService memberService) {
-        this.memberService = memberService;
-    }
-```
+- 회원 웹 기능 - 홈 화면 추가
+- 회원 웹 기능 - 등록
+- 회원 웹 기능 - 조회
